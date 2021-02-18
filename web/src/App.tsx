@@ -1,13 +1,17 @@
-import React from 'react';
+import React from "react";
 
-import './styles/global.css';
-import 'leaflet/dist/leaflet.css';
+import "./styles/global.css";
+import "leaflet/dist/leaflet.css";
 
-import Routes from './routes';
+import AppProvider from "./hooks";
+
+import Routes from "./routes/index";
 
 function App() {
   return (
-    <Routes />
+    <AppProvider>
+      <Routes />
+    </AppProvider>
   );
 }
 

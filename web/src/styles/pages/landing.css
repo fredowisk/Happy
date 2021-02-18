@@ -15,7 +15,7 @@
   max-width: 1100px;
 
   height: 100%;
-  max-height: 680px;
+  max-height: 620px;
 
   display: flex;
   align-items: flex-start;
@@ -23,7 +23,7 @@
   justify-content: space-between;
 
   /* passando o eixo x e o eixo y */
-  background: url('../../images/landing.svg') no-repeat 80% center;
+  background: url('../../images/landing.svg') no-repeat 80% 10%;
 }
 
 #page-landing .content-wrapper main {

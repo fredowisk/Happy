@@ -1,5 +1,6 @@
 import Orphanage from "../models/Orphanage";
 import imagesView from "./images_view";
+import usersView from './users_view';
 
 export default {
   render(orphanage: Orphanage) {
@@ -13,6 +14,7 @@ export default {
       opening_hours: orphanage.opening_hours,
       open_on_weekends: orphanage.open_on_weekends,
       images: imagesView.renderMany(orphanage.images),
+      user: usersView.render(orphanage.user),
     };
   },
 

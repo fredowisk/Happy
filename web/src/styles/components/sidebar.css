@@ -6,22 +6,25 @@ aside.app-sidebar {
 
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 }
 
 aside.app-sidebar img {
   width: 48px;
 }
 
-aside.app-sidebar footer a,
-aside.app-sidebar footer button {
+aside.app-sidebar div button{
+  margin-bottom: 10px;
+}
+
+aside.app-sidebar a,
+aside.app-sidebar button {
   width: 48px;
   height: 48px;
 
   border: 0;
 
-  background: #12afcb;
   border-radius: 16px;
 
   cursor: pointer;
@@ -33,7 +36,11 @@ aside.app-sidebar footer button {
   align-items: center;
 }
 
-aside.app-sidebar footer a:hover,
-aside.app-sidebar footer button:hover {
+.blue-button {
+  background: #12afcb;
+  color: #FFF;
+}
+
+.blue-button:hover {
   background: #17d6eb;
 }

@@ -20,7 +20,7 @@ const errorHandler: ErrorRequestHandler = (error, request, response, next) => {
 
     return response.status(400).json({ message: "Erro na validação!", errors });
   }
-  return response.status(500).json({ message: "Erro interno no servidor." });
+  return response.status(500).json(error);
 };
 
 export default errorHandler;

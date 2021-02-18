@@ -1,0 +1,107 @@
+#page-pending-registrations {
+  display: flex;
+  min-height: 100vh;
+}
+
+#page-pending-registrations main {
+  flex: 1;
+}
+
+.pending-orphanages {
+  width: 1000px;
+  margin: 64px auto;
+
+  border-radius: 20px;
+
+  overflow: hidden;
+}
+
+.pending-orphanages .top-bar {
+  display: flex;
+
+  justify-content: space-between;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #D3E2E5;
+}
+
+.pending-orphanages .top-bar h1 {
+  color: #4d6f80;
+}
+
+.pending-orphanages .top-bar span {
+  font-size: 16px;
+  color: #8FA7B3;
+  margin: 5px 5px 0;
+}
+
+.pending-orphanages .orphanage-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 56px;
+
+  margin: 16px 20px;
+}
+
+.pending-orphanages .orphanage-preview {
+  margin: 34px 0;
+  background: #ffffff;
+  border: 1px solid #b3dae2;
+  border-radius: 20px;
+}
+
+.pending-orphanages .orphanage-preview footer {
+  display: flex;
+  height: 50px;
+  padding: 0 20px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.pending-orphanages .orphanage-preview .icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pending-orphanages .orphanage-preview .icons .icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+
+  background: #EBF2F5;
+  color: #15C3D6;
+  cursor: pointer;
+  margin-right: 6px;
+}
+
+.pending-orphanages .orphanage-preview footer h1 {
+  color: #4d6f80;
+  font-size: 18px;
+}
+
+.pending-orphanages .orphanage-preview .leaflet-container {
+  border-bottom: 1px solid #dde3f0;
+  border-radius: 20px;
+}
+
+.blue-button {
+  background: #12afcb;
+  color: #FFF;
+}
+
+.blue-button:hover {
+  background: #17d6eb;
+}
+
+.yellow-button {
+  background: #FFD666;
+  color: #12afcb;
+}
+
+.yellow-button:hover {
+  background: #faca48;
+}

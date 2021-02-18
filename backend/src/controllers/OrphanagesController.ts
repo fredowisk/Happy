@@ -6,11 +6,17 @@ import * as Yup from "yup";
 
 export default {
   async index(request: Request, response: Response) {
+    const { user_id } = request.params;
     const orphanagesRepository = getRepository(Orphanage);
 
     const orphanages = await orphanagesRepository.find({
+      where: {
+        user: {
+          id: user_id,
+        },
+      },
       //nome da relação entre as tabelas
-      relations: ["images"],
+      relations: ["images", "user"],
     });
 
     return response.json(orphanageView.renderMany(orphanages));
@@ -22,8 +28,13 @@ export default {
       const orphanagesRepository = getRepository(Orphanage);
 
       const orphanage = await orphanagesRepository.findOneOrFail(id, {
+        where: {
+          user: {
+            id: '21d8fd0c-1a3b-4341-ab68-2c8dd493eeac'
+          },
+        },
         //nome da relação entre as tabelas
-        relations: ["images"],
+        relations: ["images", "user"],
       });
 
       return response.json(orphanageView.render(orphanage));
@@ -35,6 +46,10 @@ export default {
   },
 
   async create(request: Request, response: Response) {
+    const user_id = request.user.id;
+
+    console.log(user_id);
+
     const {
       name,
       latitude,
@@ -60,18 +75,19 @@ export default {
       about,
       instructions,
       opening_hours,
-      open_on_weekends: open_on_weekends === 'true',
+      open_on_weekends: open_on_weekends === "true",
       images,
+      user_id,
     };
 
     const schema = Yup.object().shape({
-      name: Yup.string().required('Nome obrigatório'),
-      latitude: Yup.number().required('Latitude obrigatória'),
-      longitude: Yup.number().required('Longitude obrigatória'),
-      about: Yup.string().required('About obrigatório').max(300),
-      instructions: Yup.string().required('Instruções obrigatórias'),
-      opening_hours: Yup.string().required('Horarios obrigatórios'),
-      open_on_weekends: Yup.boolean().required('Fim de semanas obrigatórios'),
+      name: Yup.string().required("Nome obrigatório"),
+      latitude: Yup.number().required("Latitude obrigatória"),
+      longitude: Yup.number().required("Longitude obrigatória"),
+      about: Yup.string().required("About obrigatório").max(300),
+      instructions: Yup.string().required("Instruções obrigatórias"),
+      opening_hours: Yup.string().required("Horarios obrigatórios"),
+      open_on_weekends: Yup.boolean().required("Fim de semanas obrigatórios"),
       images: Yup.array(
         Yup.object().shape({
           path: Yup.string().required(),
@@ -81,7 +97,7 @@ export default {
 
     await schema.validate(data, {
       abortEarly: false,
-    })
+    });
 
     const orphanage = orphanagesRepository.create(data);
 

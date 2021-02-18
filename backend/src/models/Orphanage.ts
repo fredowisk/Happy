@@ -4,9 +4,11 @@ import {
   PrimaryGeneratedColumn,
   OneToMany,
   JoinColumn,
+  ManyToOne,
 } from "typeorm";
 
 import Image from "./Image";
+import User from "./User";
 
 @Entity("orphanages")
 export default class Orphanage {
@@ -34,9 +36,16 @@ export default class Orphanage {
   @Column()
   open_on_weekends: boolean;
 
+  @Column()
+  user_id: string;
+
+  @ManyToOne(() => User, user => user.orphanage)
+  @JoinColumn({ name: "user_id" })
+  user: User;
+
   @OneToMany(() => Image, (image) => image.orphanage, {
     //toda vez que o orfanato for criado ou atualizado, cadastre novamente as imagens
-    cascade: ['insert', 'update']
+    cascade: ["insert", "update"],
   })
   @JoinColumn({ name: "orphanage_id" })
   images: Image[];
